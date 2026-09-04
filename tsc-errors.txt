@@ -1,0 +1,19 @@
+﻿src/app/about/page.tsx(3,10): error TS2305: Module '"lucide-react"' has no exported member 'Github'.
+src/app/about/page.tsx(3,18): error TS2305: Module '"lucide-react"' has no exported member 'Linkedin'.
+src/app/about/page.tsx(9,7): error TS7034: Variable 'teamMembers' implicitly has type 'any[]' in some locations where its type cannot be determined.
+src/app/about/page.tsx(104,16): error TS7005: Variable 'teamMembers' implicitly has an 'any[]' type.
+src/app/about/page.tsx(167,54): error TS7006: Parameter 's' implicitly has an 'any' type.
+src/app/api/auth/register/route.ts(19,31): error TS2339: Property 'errors' does not exist on type 'ZodError<{ email: string; password: string; name: string; }>'.
+src/app/api/profile/update/route.ts(33,31): error TS2339: Property 'errors' does not exist on type 'ZodError<{ name: string; college?: string | null | undefined; degree?: string | null | undefined; branch?: string | null | undefined; gradYear?: number | null | undefined; careerGoal?: string | null | undefined; ... 4 more ...; bio?: string | ... 1 more ... | undefined; }>'.
+src/app/api/profile/update/route.ts(43,22): error TS18048: 'session.user' is possibly 'undefined'.
+src/app/api/profile/update/route.ts(49,26): error TS18048: 'session.user' is possibly 'undefined'.
+src/app/api/profile/update/route.ts(62,9): error TS2322: Type '{ userId: string | undefined; college: string | null | undefined; degree: string | null | undefined; branch: string | null | undefined; gradYear: number | null | undefined; careerGoal: string | ... 1 more ... | undefined; ... 4 more ...; bio: string | ... 1 more ... | undefined; }' is not assignable to type '((Without<ProfileCreateInput, ProfileUncheckedCreateInput> & ProfileUncheckedCreateInput) | (Without<...> & ProfileCreateInput)) & object'.
+  Type '{ userId: string | undefined; college: string | null | undefined; degree: string | null | undefined; branch: string | null | undefined; gradYear: number | null | undefined; careerGoal: string | ... 1 more ... | undefined; ... 4 more ...; bio: string | ... 1 more ... | undefined; }' is not assignable to type 'Without<ProfileUncheckedCreateInput, ProfileCreateInput> & ProfileCreateInput & object'.
+    Type '{ userId: string | undefined; college: string | null | undefined; degree: string | null | undefined; branch: string | null | undefined; gradYear: number | null | undefined; careerGoal: string | ... 1 more ... | undefined; ... 4 more ...; bio: string | ... 1 more ... | undefined; }' is not assignable to type 'Without<ProfileUncheckedCreateInput, ProfileCreateInput>'.
+      Types of property 'userId' are incompatible.
+        Type 'string | undefined' is not assignable to type 'undefined'.
+          Type 'string' is not assignable to type 'undefined'.
+src/app/api/profile/update/route.ts(63,19): error TS18048: 'session.user' is possibly 'undefined'.
+src/app/layout.tsx(34,10): error TS2741: Property 'session' is missing in type '{}' but required in type 'NavbarProps'.
+src/components/dashboard/ProfileForm.tsx(5,61): error TS2305: Module '"lucide-react"' has no exported member 'Linkedin'.
+src/components/dashboard/ProfileForm.tsx(5,71): error TS2305: Module '"lucide-react"' has no exported member 'Github'.
