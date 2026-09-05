@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Providers from "@/components/providers/SessionProvider";
 import AiTutorOrb from "@/components/ai/AiTutorOrb";
+import AnalyticsTracker from "@/components/analytics/AnalyticsTracker";
 
 export const metadata: Metadata = {
   title: "SkillForge by Code404 — Learn. Build. Practice. Get Hired.",
@@ -35,6 +36,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="bg-bg-base text-text-main font-sans min-h-screen flex flex-col justify-between selection:bg-primary/20 selection:text-text-main">
         <Providers>
+          <AnalyticsTracker />
           <Navbar />
           <main className="flex-grow flex flex-col">
             {children}

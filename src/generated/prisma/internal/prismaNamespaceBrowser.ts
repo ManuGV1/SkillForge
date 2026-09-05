@@ -94,7 +94,8 @@ export const ModelName = {
   DsaProblem: 'DsaProblem',
   DsaHint: 'DsaHint',
   UserDsaProgress: 'UserDsaProgress',
-  SupportRequest: 'SupportRequest'
+  SupportRequest: 'SupportRequest',
+  PageVisit: 'PageVisit'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -715,6 +716,21 @@ export const SupportRequestScalarFieldEnum = {
 } as const
 
 export type SupportRequestScalarFieldEnum = (typeof SupportRequestScalarFieldEnum)[keyof typeof SupportRequestScalarFieldEnum]
+
+
+export const PageVisitScalarFieldEnum = {
+  id: 'id',
+  visitorId: 'visitorId',
+  path: 'path',
+  referrer: 'referrer',
+  deviceType: 'deviceType',
+  browser: 'browser',
+  os: 'os',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type PageVisitScalarFieldEnum = (typeof PageVisitScalarFieldEnum)[keyof typeof PageVisitScalarFieldEnum]
 
 
 export const SortOrder = {

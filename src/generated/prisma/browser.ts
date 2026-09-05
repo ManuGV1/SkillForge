@@ -237,3 +237,8 @@ export type UserDsaProgress = Prisma.UserDsaProgressModel
  * 
  */
 export type SupportRequest = Prisma.SupportRequestModel
+/**
+ * Model PageVisit
+ * 
+ */
+export type PageVisit = Prisma.PageVisitModel

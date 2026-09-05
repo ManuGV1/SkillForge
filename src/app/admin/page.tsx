@@ -11,6 +11,7 @@ import {
   ArrowRight,
   Loader2,
   Lock,
+  Activity,
 } from "lucide-react";
 
 export default function AdminDashboardPage() {
@@ -21,6 +22,8 @@ export default function AdminDashboardPage() {
     openSupportTickets: 0,
     totalUsers: 0,
     adminCount: 0,
+    totalVisits: 0,
+    todayVisits: 0,
   });
 
   const [loading, setLoading] = useState(false);
@@ -34,14 +37,16 @@ export default function AdminDashboardPage() {
     let isMounted = true;
 
     Promise.all([
-      fetch("/api/admin/support").then((res) => res.json()),
-      fetch("/api/admin/users").then((res) => res.json()),
+      fetch("/api/admin/support").then((res) => res.json()).catch(() => ({})),
+      fetch("/api/admin/users").then((res) => res.json()).catch(() => ({})),
+      fetch("/api/admin/analytics?range=30d").then((res) => res.json()).catch(() => ({})),
     ])
-      .then(([supportRes, usersRes]) => {
+      .then(([supportRes, usersRes, analyticsRes]) => {
         if (!isMounted) return;
 
         const tickets = supportRes.success ? supportRes.data || [] : [];
         const users = usersRes.success ? usersRes.data?.users || [] : [];
+        const analyticsSummary = analyticsRes.success ? analyticsRes.data?.summary : null;
 
         setStats({
           totalSupportTickets: tickets.length,
@@ -51,6 +56,8 @@ export default function AdminDashboardPage() {
             (u: { role?: { name?: string } }) =>
               u.role?.name === "ADMIN" || u.role?.name === "SUPER_ADMIN"
           ).length,
+          totalVisits: analyticsSummary?.totalVisits || 0,
+          todayVisits: analyticsSummary?.todayVisits || 0,
         });
       })
       .catch((err) => {
@@ -131,7 +138,42 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Dashboard Navigation Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Visitor Analytics Card */}
+          <div className="bg-bg-surface border border-border-sharp rounded-xl p-6 hover:border-primary/50 transition-all shadow-sm flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <div className="flex justify-between items-start">
+                <div className="p-2.5 rounded-lg bg-amber-950/60 border border-amber-800/60 text-primary">
+                  <Activity className="w-6 h-6" />
+                </div>
+                <span className="font-mono text-xs text-amber-300 bg-amber-950/60 border border-amber-800/60 px-2.5 py-1 rounded-full">
+                  {stats.todayVisits} Today
+                </span>
+              </div>
+
+              <div>
+                <h2 className="text-lg font-display font-bold text-text-main">
+                  Visitor Analytics
+                </h2>
+                <p className="text-xs text-text-dim mt-1 leading-relaxed">
+                  Real-time privacy-conscious traffic telemetry, unique visitor tracking, member vs anonymous activity, and page view metrics.
+                </p>
+              </div>
+
+              <div className="pt-2 text-xs font-mono text-text-sub flex items-center gap-4 border-t border-border-sharp/40">
+                <span>Total 30d Visits: <strong className="text-text-main">{stats.totalVisits}</strong></span>
+              </div>
+            </div>
+
+            <Link
+              href="/admin/analytics"
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-sm bg-primary text-bg-base font-sans text-xs font-semibold uppercase tracking-wider hover:bg-primary-dim transition-colors"
+            >
+              Open Analytics
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
           {/* Support Portal Card */}
           <div className="bg-bg-surface border border-border-sharp rounded-xl p-6 hover:border-primary/50 transition-all shadow-sm flex flex-col justify-between space-y-6">
             <div className="space-y-4">
@@ -160,10 +202,10 @@ export default function AdminDashboardPage() {
 
             <Link
               href="/admin/support"
-              className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-sm bg-primary text-bg-base font-sans text-xs font-semibold uppercase tracking-wider hover:bg-primary-dim transition-colors"
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-sm bg-bg-base border border-border-sharp text-text-main hover:border-primary font-sans text-xs font-semibold uppercase tracking-wider transition-colors"
             >
               Open Support Dashboard
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-primary" />
             </Link>
           </div>
 

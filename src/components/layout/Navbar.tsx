@@ -14,6 +14,7 @@ import {
   Code,
   Sparkles,
   LifeBuoy,
+  Activity,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -112,13 +113,22 @@ export default function Navbar() {
                 </Link>
 
                 {isAdmin && (
-                  <Link
-                    href="/admin/support"
-                    className="flex items-center gap-1.5 font-sans text-xs font-semibold text-emerald-400 transition-colors duration-150 hover:text-emerald-300 lg:text-sm"
-                  >
-                    <LifeBuoy className="h-4 w-4 text-emerald-400" />
-                    Admin Support
-                  </Link>
+                  <>
+                    <Link
+                      href="/admin/analytics"
+                      className="flex items-center gap-1.5 font-sans text-xs font-semibold text-amber-400 transition-colors duration-150 hover:text-amber-300 lg:text-sm"
+                    >
+                      <Activity className="h-4 w-4 text-amber-400" />
+                      Analytics
+                    </Link>
+                    <Link
+                      href="/admin/support"
+                      className="flex items-center gap-1.5 font-sans text-xs font-semibold text-emerald-400 transition-colors duration-150 hover:text-emerald-300 lg:text-sm"
+                    >
+                      <LifeBuoy className="h-4 w-4 text-emerald-400" />
+                      Admin Support
+                    </Link>
+                  </>
                 )}
               </>
             )}
@@ -255,6 +265,28 @@ export default function Navbar() {
                   <User className="h-4 w-4 text-text-sub" />
                   Profile
                 </Link>
+
+                {isAdmin && (
+                  <>
+                    <Link
+                      href="/admin/analytics"
+                      onClick={() => setIsOpen(false)}
+                      className="inline-flex w-full items-center gap-3 rounded-sm bg-amber-950/20 border border-amber-800/40 px-4 py-3 font-sans text-sm font-semibold text-amber-400 hover:bg-amber-950/40"
+                    >
+                      <Activity className="h-4 w-4 text-amber-400" />
+                      Visitor Analytics
+                    </Link>
+
+                    <Link
+                      href="/admin/support"
+                      onClick={() => setIsOpen(false)}
+                      className="inline-flex w-full items-center gap-3 rounded-sm bg-emerald-950/20 border border-emerald-800/40 px-4 py-3 font-sans text-sm font-semibold text-emerald-400 hover:bg-emerald-950/40"
+                    >
+                      <LifeBuoy className="h-4 w-4 text-emerald-400" />
+                      Admin Support
+                    </Link>
+                  </>
+                )}
 
                 <button
                   onClick={() => {

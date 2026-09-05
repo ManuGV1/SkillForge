@@ -440,7 +440,8 @@ export const ModelName = {
   DsaProblem: 'DsaProblem',
   DsaHint: 'DsaHint',
   UserDsaProgress: 'UserDsaProgress',
-  SupportRequest: 'SupportRequest'
+  SupportRequest: 'SupportRequest',
+  PageVisit: 'PageVisit'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -456,7 +457,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "role" | "user" | "profile" | "teamMember" | "account" | "session" | "verificationToken" | "careerPath" | "roadmap" | "roadmapStage" | "course" | "courseModule" | "lesson" | "resource" | "enrollment" | "lessonProgress" | "questionTopic" | "question" | "submission" | "assessment" | "assessmentAttempt" | "assessmentResult" | "project" | "projectTask" | "projectSubmission" | "company" | "companyRole" | "interviewQuestion" | "placementResource" | "readinessScore" | "review" | "reviewReport" | "certificate" | "badge" | "notification" | "savedItem" | "subscription" | "order" | "stageTopic" | "userTopicProgress" | "dsaProblem" | "dsaHint" | "userDsaProgress" | "supportRequest"
+    modelProps: "role" | "user" | "profile" | "teamMember" | "account" | "session" | "verificationToken" | "careerPath" | "roadmap" | "roadmapStage" | "course" | "courseModule" | "lesson" | "resource" | "enrollment" | "lessonProgress" | "questionTopic" | "question" | "submission" | "assessment" | "assessmentAttempt" | "assessmentResult" | "project" | "projectTask" | "projectSubmission" | "company" | "companyRole" | "interviewQuestion" | "placementResource" | "readinessScore" | "review" | "reviewReport" | "certificate" | "badge" | "notification" | "savedItem" | "subscription" | "order" | "stageTopic" | "userTopicProgress" | "dsaProblem" | "dsaHint" | "userDsaProgress" | "supportRequest" | "pageVisit"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3716,6 +3717,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PageVisit: {
+      payload: Prisma.$PageVisitPayload<ExtArgs>
+      fields: Prisma.PageVisitFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PageVisitFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PageVisitFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>
+        }
+        findFirst: {
+          args: Prisma.PageVisitFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PageVisitFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>
+        }
+        findMany: {
+          args: Prisma.PageVisitFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>[]
+        }
+        create: {
+          args: Prisma.PageVisitCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>
+        }
+        createMany: {
+          args: Prisma.PageVisitCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PageVisitCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>[]
+        }
+        delete: {
+          args: Prisma.PageVisitDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>
+        }
+        update: {
+          args: Prisma.PageVisitUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>
+        }
+        deleteMany: {
+          args: Prisma.PageVisitDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PageVisitUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PageVisitUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>[]
+        }
+        upsert: {
+          args: Prisma.PageVisitUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PageVisitPayload>
+        }
+        aggregate: {
+          args: Prisma.PageVisitAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePageVisit>
+        }
+        groupBy: {
+          args: Prisma.PageVisitGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PageVisitGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PageVisitCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PageVisitCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -4359,6 +4434,21 @@ export const SupportRequestScalarFieldEnum = {
 export type SupportRequestScalarFieldEnum = (typeof SupportRequestScalarFieldEnum)[keyof typeof SupportRequestScalarFieldEnum]
 
 
+export const PageVisitScalarFieldEnum = {
+  id: 'id',
+  visitorId: 'visitorId',
+  path: 'path',
+  referrer: 'referrer',
+  deviceType: 'deviceType',
+  browser: 'browser',
+  os: 'os',
+  userId: 'userId',
+  createdAt: 'createdAt'
+} as const
+
+export type PageVisitScalarFieldEnum = (typeof PageVisitScalarFieldEnum)[keyof typeof PageVisitScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -4646,6 +4736,7 @@ export type GlobalOmitConfig = {
   dsaHint?: Prisma.DsaHintOmit
   userDsaProgress?: Prisma.UserDsaProgressOmit
   supportRequest?: Prisma.SupportRequestOmit
+  pageVisit?: Prisma.PageVisitOmit
 }
 
 /* Types for Logging */

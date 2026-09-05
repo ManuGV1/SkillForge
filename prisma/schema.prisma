@@ -47,6 +47,7 @@ model User {
   userTopicProgress  UserTopicProgress[]
   userDsaProgress    UserDsaProgress[]
   supportRequests    SupportRequest[]
+  pageVisits         PageVisit[]
   createdAt          DateTime            @default(now()) @map("created_at")
   updatedAt          DateTime            @updatedAt @map("updated_at")
 
@@ -676,4 +677,28 @@ model SupportRequest {
 
   @@map("support_requests")
 }
+
+// =====================================================
+// VISITOR ANALYTICS — Privacy-Conscious Tracking System
+// =====================================================
+
+model PageVisit {
+  id          String   @id @default(uuid())
+  visitorId   String   @map("visitor_id") // Privacy-friendly anonymous UUID stored in first-party cookie/client storage
+  path        String   // URL path e.g. "/", "/roadmap", "/dsa"
+  referrer    String?  // Referrer if available
+  deviceType  String?  @map("device_type") // desktop, mobile, tablet, bot, other
+  browser     String?  // Chrome, Firefox, Safari, Edge, etc.
+  os          String?  // Windows, macOS, Linux, Android, iOS, etc.
+  userId      String?  @map("user_id") // Optional link to User if authenticated
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@index([path])
+  @@index([visitorId])
+  @@index([userId])
+  @@map("page_visits")
+}
+
 

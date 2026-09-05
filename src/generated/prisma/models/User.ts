@@ -235,6 +235,7 @@ export type UserWhereInput = {
   userTopicProgress?: Prisma.UserTopicProgressListRelationFilter
   userDsaProgress?: Prisma.UserDsaProgressListRelationFilter
   supportRequests?: Prisma.SupportRequestListRelationFilter
+  pageVisits?: Prisma.PageVisitListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -268,6 +269,7 @@ export type UserOrderByWithRelationInput = {
   userTopicProgress?: Prisma.UserTopicProgressOrderByRelationAggregateInput
   userDsaProgress?: Prisma.UserDsaProgressOrderByRelationAggregateInput
   supportRequests?: Prisma.SupportRequestOrderByRelationAggregateInput
+  pageVisits?: Prisma.PageVisitOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -304,6 +306,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   userTopicProgress?: Prisma.UserTopicProgressListRelationFilter
   userDsaProgress?: Prisma.UserDsaProgressListRelationFilter
   supportRequests?: Prisma.SupportRequestListRelationFilter
+  pageVisits?: Prisma.PageVisitListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -366,6 +369,7 @@ export type UserCreateInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -398,6 +402,7 @@ export type UserUncheckedCreateInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -430,6 +435,7 @@ export type UserUpdateInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -462,6 +468,7 @@ export type UserUncheckedUpdateInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -883,6 +890,22 @@ export type UserUpdateOneWithoutSupportRequestsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSupportRequestsInput, Prisma.UserUpdateWithoutSupportRequestsInput>, Prisma.UserUncheckedUpdateWithoutSupportRequestsInput>
 }
 
+export type UserCreateNestedOneWithoutPageVisitsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPageVisitsInput, Prisma.UserUncheckedCreateWithoutPageVisitsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPageVisitsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutPageVisitsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutPageVisitsInput, Prisma.UserUncheckedCreateWithoutPageVisitsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutPageVisitsInput
+  upsert?: Prisma.UserUpsertWithoutPageVisitsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPageVisitsInput, Prisma.UserUpdateWithoutPageVisitsInput>, Prisma.UserUncheckedUpdateWithoutPageVisitsInput>
+}
+
 export type UserCreateWithoutRoleInput = {
   id?: string
   name?: string | null
@@ -912,6 +935,7 @@ export type UserCreateWithoutRoleInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -943,6 +967,7 @@ export type UserUncheckedCreateWithoutRoleInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -1015,6 +1040,7 @@ export type UserCreateWithoutProfileInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProfileInput = {
@@ -1046,6 +1072,7 @@ export type UserUncheckedCreateWithoutProfileInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProfileInput = {
@@ -1093,6 +1120,7 @@ export type UserUpdateWithoutProfileInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProfileInput = {
@@ -1124,6 +1152,7 @@ export type UserUncheckedUpdateWithoutProfileInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -1155,6 +1184,7 @@ export type UserCreateWithoutAccountsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -1186,6 +1216,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -1233,6 +1264,7 @@ export type UserUpdateWithoutAccountsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -1264,6 +1296,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -1295,6 +1328,7 @@ export type UserCreateWithoutSessionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -1326,6 +1360,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -1373,6 +1408,7 @@ export type UserUpdateWithoutSessionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -1404,6 +1440,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutEnrollmentsInput = {
@@ -1435,6 +1472,7 @@ export type UserCreateWithoutEnrollmentsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutEnrollmentsInput = {
@@ -1466,6 +1504,7 @@ export type UserUncheckedCreateWithoutEnrollmentsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutEnrollmentsInput = {
@@ -1513,6 +1552,7 @@ export type UserUpdateWithoutEnrollmentsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEnrollmentsInput = {
@@ -1544,6 +1584,7 @@ export type UserUncheckedUpdateWithoutEnrollmentsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutLessonProgressInput = {
@@ -1575,6 +1616,7 @@ export type UserCreateWithoutLessonProgressInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutLessonProgressInput = {
@@ -1606,6 +1648,7 @@ export type UserUncheckedCreateWithoutLessonProgressInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutLessonProgressInput = {
@@ -1653,6 +1696,7 @@ export type UserUpdateWithoutLessonProgressInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLessonProgressInput = {
@@ -1684,6 +1728,7 @@ export type UserUncheckedUpdateWithoutLessonProgressInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSubmissionsInput = {
@@ -1715,6 +1760,7 @@ export type UserCreateWithoutSubmissionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSubmissionsInput = {
@@ -1746,6 +1792,7 @@ export type UserUncheckedCreateWithoutSubmissionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSubmissionsInput = {
@@ -1793,6 +1840,7 @@ export type UserUpdateWithoutSubmissionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSubmissionsInput = {
@@ -1824,6 +1872,7 @@ export type UserUncheckedUpdateWithoutSubmissionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAssessmentAttemptsInput = {
@@ -1855,6 +1904,7 @@ export type UserCreateWithoutAssessmentAttemptsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAssessmentAttemptsInput = {
@@ -1886,6 +1936,7 @@ export type UserUncheckedCreateWithoutAssessmentAttemptsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAssessmentAttemptsInput = {
@@ -1933,6 +1984,7 @@ export type UserUpdateWithoutAssessmentAttemptsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAssessmentAttemptsInput = {
@@ -1964,6 +2016,7 @@ export type UserUncheckedUpdateWithoutAssessmentAttemptsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutProjectSubmissionsInput = {
@@ -1995,6 +2048,7 @@ export type UserCreateWithoutProjectSubmissionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutProjectSubmissionsInput = {
@@ -2026,6 +2080,7 @@ export type UserUncheckedCreateWithoutProjectSubmissionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutProjectSubmissionsInput = {
@@ -2073,6 +2128,7 @@ export type UserUpdateWithoutProjectSubmissionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProjectSubmissionsInput = {
@@ -2104,6 +2160,7 @@ export type UserUncheckedUpdateWithoutProjectSubmissionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReadinessScoresInput = {
@@ -2135,6 +2192,7 @@ export type UserCreateWithoutReadinessScoresInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReadinessScoresInput = {
@@ -2166,6 +2224,7 @@ export type UserUncheckedCreateWithoutReadinessScoresInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReadinessScoresInput = {
@@ -2213,6 +2272,7 @@ export type UserUpdateWithoutReadinessScoresInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReadinessScoresInput = {
@@ -2244,6 +2304,7 @@ export type UserUncheckedUpdateWithoutReadinessScoresInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewsInput = {
@@ -2275,6 +2336,7 @@ export type UserCreateWithoutReviewsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewsInput = {
@@ -2306,6 +2368,7 @@ export type UserUncheckedCreateWithoutReviewsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewsInput = {
@@ -2353,6 +2416,7 @@ export type UserUpdateWithoutReviewsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -2384,6 +2448,7 @@ export type UserUncheckedUpdateWithoutReviewsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutReviewReportsInput = {
@@ -2415,6 +2480,7 @@ export type UserCreateWithoutReviewReportsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutReviewReportsInput = {
@@ -2446,6 +2512,7 @@ export type UserUncheckedCreateWithoutReviewReportsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutReviewReportsInput = {
@@ -2493,6 +2560,7 @@ export type UserUpdateWithoutReviewReportsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReviewReportsInput = {
@@ -2524,6 +2592,7 @@ export type UserUncheckedUpdateWithoutReviewReportsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCertificatesInput = {
@@ -2555,6 +2624,7 @@ export type UserCreateWithoutCertificatesInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCertificatesInput = {
@@ -2586,6 +2656,7 @@ export type UserUncheckedCreateWithoutCertificatesInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCertificatesInput = {
@@ -2633,6 +2704,7 @@ export type UserUpdateWithoutCertificatesInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCertificatesInput = {
@@ -2664,6 +2736,7 @@ export type UserUncheckedUpdateWithoutCertificatesInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutBadgesInput = {
@@ -2695,6 +2768,7 @@ export type UserCreateWithoutBadgesInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutBadgesInput = {
@@ -2726,6 +2800,7 @@ export type UserUncheckedCreateWithoutBadgesInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutBadgesInput = {
@@ -2773,6 +2848,7 @@ export type UserUpdateWithoutBadgesInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutBadgesInput = {
@@ -2804,6 +2880,7 @@ export type UserUncheckedUpdateWithoutBadgesInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -2835,6 +2912,7 @@ export type UserCreateWithoutNotificationsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -2866,6 +2944,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -2913,6 +2992,7 @@ export type UserUpdateWithoutNotificationsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -2944,6 +3024,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSavedItemsInput = {
@@ -2975,6 +3056,7 @@ export type UserCreateWithoutSavedItemsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSavedItemsInput = {
@@ -3006,6 +3088,7 @@ export type UserUncheckedCreateWithoutSavedItemsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSavedItemsInput = {
@@ -3053,6 +3136,7 @@ export type UserUpdateWithoutSavedItemsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSavedItemsInput = {
@@ -3084,6 +3168,7 @@ export type UserUncheckedUpdateWithoutSavedItemsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSubscriptionsInput = {
@@ -3115,6 +3200,7 @@ export type UserCreateWithoutSubscriptionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSubscriptionsInput = {
@@ -3146,6 +3232,7 @@ export type UserUncheckedCreateWithoutSubscriptionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSubscriptionsInput = {
@@ -3193,6 +3280,7 @@ export type UserUpdateWithoutSubscriptionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSubscriptionsInput = {
@@ -3224,6 +3312,7 @@ export type UserUncheckedUpdateWithoutSubscriptionsInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutOrdersInput = {
@@ -3255,6 +3344,7 @@ export type UserCreateWithoutOrdersInput = {
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutOrdersInput = {
@@ -3286,6 +3376,7 @@ export type UserUncheckedCreateWithoutOrdersInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutOrdersInput = {
@@ -3333,6 +3424,7 @@ export type UserUpdateWithoutOrdersInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrdersInput = {
@@ -3364,6 +3456,7 @@ export type UserUncheckedUpdateWithoutOrdersInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserTopicProgressInput = {
@@ -3395,6 +3488,7 @@ export type UserCreateWithoutUserTopicProgressInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserTopicProgressInput = {
@@ -3426,6 +3520,7 @@ export type UserUncheckedCreateWithoutUserTopicProgressInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserTopicProgressInput = {
@@ -3473,6 +3568,7 @@ export type UserUpdateWithoutUserTopicProgressInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserTopicProgressInput = {
@@ -3504,6 +3600,7 @@ export type UserUncheckedUpdateWithoutUserTopicProgressInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutUserDsaProgressInput = {
@@ -3535,6 +3632,7 @@ export type UserCreateWithoutUserDsaProgressInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutUserDsaProgressInput = {
@@ -3566,6 +3664,7 @@ export type UserUncheckedCreateWithoutUserDsaProgressInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutUserDsaProgressInput = {
@@ -3613,6 +3712,7 @@ export type UserUpdateWithoutUserDsaProgressInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserDsaProgressInput = {
@@ -3644,6 +3744,7 @@ export type UserUncheckedUpdateWithoutUserDsaProgressInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutSupportRequestsInput = {
@@ -3675,6 +3776,7 @@ export type UserCreateWithoutSupportRequestsInput = {
   orders?: Prisma.OrderCreateNestedManyWithoutUserInput
   userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSupportRequestsInput = {
@@ -3706,6 +3808,7 @@ export type UserUncheckedCreateWithoutSupportRequestsInput = {
   orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
   userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
+  pageVisits?: Prisma.PageVisitUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSupportRequestsInput = {
@@ -3753,6 +3856,7 @@ export type UserUpdateWithoutSupportRequestsInput = {
   orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSupportRequestsInput = {
@@ -3784,6 +3888,151 @@ export type UserUncheckedUpdateWithoutSupportRequestsInput = {
   orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutPageVisitsInput = {
+  id?: string
+  name?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  image?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  role?: Prisma.RoleCreateNestedOneWithoutUsersInput
+  profile?: Prisma.ProfileCreateNestedOneWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  enrollments?: Prisma.EnrollmentCreateNestedManyWithoutUserInput
+  lessonProgress?: Prisma.LessonProgressCreateNestedManyWithoutUserInput
+  submissions?: Prisma.SubmissionCreateNestedManyWithoutUserInput
+  assessmentAttempts?: Prisma.AssessmentAttemptCreateNestedManyWithoutUserInput
+  projectSubmissions?: Prisma.ProjectSubmissionCreateNestedManyWithoutUserInput
+  readinessScores?: Prisma.ReadinessScoreCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutUserInput
+  reviewReports?: Prisma.ReviewReportCreateNestedManyWithoutReporterInput
+  certificates?: Prisma.CertificateCreateNestedManyWithoutUserInput
+  badges?: Prisma.BadgeCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  savedItems?: Prisma.SavedItemCreateNestedManyWithoutUserInput
+  subscriptions?: Prisma.SubscriptionCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderCreateNestedManyWithoutUserInput
+  userTopicProgress?: Prisma.UserTopicProgressCreateNestedManyWithoutUserInput
+  userDsaProgress?: Prisma.UserDsaProgressCreateNestedManyWithoutUserInput
+  supportRequests?: Prisma.SupportRequestCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutPageVisitsInput = {
+  id?: string
+  name?: string | null
+  email: string
+  emailVerified?: Date | string | null
+  passwordHash?: string | null
+  image?: string | null
+  roleId?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  profile?: Prisma.ProfileUncheckedCreateNestedOneWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  enrollments?: Prisma.EnrollmentUncheckedCreateNestedManyWithoutUserInput
+  lessonProgress?: Prisma.LessonProgressUncheckedCreateNestedManyWithoutUserInput
+  submissions?: Prisma.SubmissionUncheckedCreateNestedManyWithoutUserInput
+  assessmentAttempts?: Prisma.AssessmentAttemptUncheckedCreateNestedManyWithoutUserInput
+  projectSubmissions?: Prisma.ProjectSubmissionUncheckedCreateNestedManyWithoutUserInput
+  readinessScores?: Prisma.ReadinessScoreUncheckedCreateNestedManyWithoutUserInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutUserInput
+  reviewReports?: Prisma.ReviewReportUncheckedCreateNestedManyWithoutReporterInput
+  certificates?: Prisma.CertificateUncheckedCreateNestedManyWithoutUserInput
+  badges?: Prisma.BadgeUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  savedItems?: Prisma.SavedItemUncheckedCreateNestedManyWithoutUserInput
+  subscriptions?: Prisma.SubscriptionUncheckedCreateNestedManyWithoutUserInput
+  orders?: Prisma.OrderUncheckedCreateNestedManyWithoutUserInput
+  userTopicProgress?: Prisma.UserTopicProgressUncheckedCreateNestedManyWithoutUserInput
+  userDsaProgress?: Prisma.UserDsaProgressUncheckedCreateNestedManyWithoutUserInput
+  supportRequests?: Prisma.SupportRequestUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutPageVisitsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutPageVisitsInput, Prisma.UserUncheckedCreateWithoutPageVisitsInput>
+}
+
+export type UserUpsertWithoutPageVisitsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutPageVisitsInput, Prisma.UserUncheckedUpdateWithoutPageVisitsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutPageVisitsInput, Prisma.UserUncheckedCreateWithoutPageVisitsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutPageVisitsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutPageVisitsInput, Prisma.UserUncheckedUpdateWithoutPageVisitsInput>
+}
+
+export type UserUpdateWithoutPageVisitsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.RoleUpdateOneWithoutUsersNestedInput
+  profile?: Prisma.ProfileUpdateOneWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  enrollments?: Prisma.EnrollmentUpdateManyWithoutUserNestedInput
+  lessonProgress?: Prisma.LessonProgressUpdateManyWithoutUserNestedInput
+  submissions?: Prisma.SubmissionUpdateManyWithoutUserNestedInput
+  assessmentAttempts?: Prisma.AssessmentAttemptUpdateManyWithoutUserNestedInput
+  projectSubmissions?: Prisma.ProjectSubmissionUpdateManyWithoutUserNestedInput
+  readinessScores?: Prisma.ReadinessScoreUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutUserNestedInput
+  reviewReports?: Prisma.ReviewReportUpdateManyWithoutReporterNestedInput
+  certificates?: Prisma.CertificateUpdateManyWithoutUserNestedInput
+  badges?: Prisma.BadgeUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  savedItems?: Prisma.SavedItemUpdateManyWithoutUserNestedInput
+  subscriptions?: Prisma.SubscriptionUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUpdateManyWithoutUserNestedInput
+  userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
+  userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
+  supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutPageVisitsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  passwordHash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  roleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  profile?: Prisma.ProfileUncheckedUpdateOneWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  enrollments?: Prisma.EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+  lessonProgress?: Prisma.LessonProgressUncheckedUpdateManyWithoutUserNestedInput
+  submissions?: Prisma.SubmissionUncheckedUpdateManyWithoutUserNestedInput
+  assessmentAttempts?: Prisma.AssessmentAttemptUncheckedUpdateManyWithoutUserNestedInput
+  projectSubmissions?: Prisma.ProjectSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  readinessScores?: Prisma.ReadinessScoreUncheckedUpdateManyWithoutUserNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutUserNestedInput
+  reviewReports?: Prisma.ReviewReportUncheckedUpdateManyWithoutReporterNestedInput
+  certificates?: Prisma.CertificateUncheckedUpdateManyWithoutUserNestedInput
+  badges?: Prisma.BadgeUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  savedItems?: Prisma.SavedItemUncheckedUpdateManyWithoutUserNestedInput
+  subscriptions?: Prisma.SubscriptionUncheckedUpdateManyWithoutUserNestedInput
+  orders?: Prisma.OrderUncheckedUpdateManyWithoutUserNestedInput
+  userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
+  userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
+  supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyRoleInput = {
@@ -3826,6 +4075,7 @@ export type UserUpdateWithoutRoleInput = {
   userTopicProgress?: Prisma.UserTopicProgressUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -3857,6 +4107,7 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   userTopicProgress?: Prisma.UserTopicProgressUncheckedUpdateManyWithoutUserNestedInput
   userDsaProgress?: Prisma.UserDsaProgressUncheckedUpdateManyWithoutUserNestedInput
   supportRequests?: Prisma.SupportRequestUncheckedUpdateManyWithoutUserNestedInput
+  pageVisits?: Prisma.PageVisitUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -3895,6 +4146,7 @@ export type UserCountOutputType = {
   userTopicProgress: number
   userDsaProgress: number
   supportRequests: number
+  pageVisits: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3917,6 +4169,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   userTopicProgress?: boolean | UserCountOutputTypeCountUserTopicProgressArgs
   userDsaProgress?: boolean | UserCountOutputTypeCountUserDsaProgressArgs
   supportRequests?: boolean | UserCountOutputTypeCountSupportRequestsArgs
+  pageVisits?: boolean | UserCountOutputTypeCountPageVisitsArgs
 }
 
 /**
@@ -4062,6 +4315,13 @@ export type UserCountOutputTypeCountSupportRequestsArgs<ExtArgs extends runtime.
   where?: Prisma.SupportRequestWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountPageVisitsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PageVisitWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -4094,6 +4354,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   userTopicProgress?: boolean | Prisma.User$userTopicProgressArgs<ExtArgs>
   userDsaProgress?: boolean | Prisma.User$userDsaProgressArgs<ExtArgs>
   supportRequests?: boolean | Prisma.User$supportRequestsArgs<ExtArgs>
+  pageVisits?: boolean | Prisma.User$pageVisitsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -4158,6 +4419,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   userTopicProgress?: boolean | Prisma.User$userTopicProgressArgs<ExtArgs>
   userDsaProgress?: boolean | Prisma.User$userDsaProgressArgs<ExtArgs>
   supportRequests?: boolean | Prisma.User$supportRequestsArgs<ExtArgs>
+  pageVisits?: boolean | Prisma.User$pageVisitsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -4191,6 +4453,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     userTopicProgress: Prisma.$UserTopicProgressPayload<ExtArgs>[]
     userDsaProgress: Prisma.$UserDsaProgressPayload<ExtArgs>[]
     supportRequests: Prisma.$SupportRequestPayload<ExtArgs>[]
+    pageVisits: Prisma.$PageVisitPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -4617,6 +4880,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   userTopicProgress<T extends Prisma.User$userTopicProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userTopicProgressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserTopicProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   userDsaProgress<T extends Prisma.User$userDsaProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userDsaProgressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserDsaProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   supportRequests<T extends Prisma.User$supportRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$supportRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SupportRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  pageVisits<T extends Prisma.User$pageVisitsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$pageVisitsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PageVisitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5547,6 +5811,30 @@ export type User$supportRequestsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.SupportRequestScalarFieldEnum | Prisma.SupportRequestScalarFieldEnum[]
+}
+
+/**
+ * User.pageVisits
+ */
+export type User$pageVisitsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PageVisit
+   */
+  select?: Prisma.PageVisitSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PageVisit
+   */
+  omit?: Prisma.PageVisitOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PageVisitInclude<ExtArgs> | null
+  where?: Prisma.PageVisitWhereInput
+  orderBy?: Prisma.PageVisitOrderByWithRelationInput | Prisma.PageVisitOrderByWithRelationInput[]
+  cursor?: Prisma.PageVisitWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PageVisitScalarFieldEnum | Prisma.PageVisitScalarFieldEnum[]
 }
 
 /**
