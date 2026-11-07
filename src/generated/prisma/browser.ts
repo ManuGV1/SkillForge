@@ -242,3 +242,8 @@ export type SupportRequest = Prisma.SupportRequestModel
  * 
  */
 export type PageVisit = Prisma.PageVisitModel
+/**
+ * Model Resume
+ * 
+ */
+export type Resume = Prisma.ResumeModel

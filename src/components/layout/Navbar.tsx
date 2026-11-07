@@ -15,6 +15,8 @@ import {
   Sparkles,
   LifeBuoy,
   Activity,
+  FileText,
+  Briefcase,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -30,7 +32,8 @@ export default function Navbar() {
     { label: "Courses", href: "/#courses" },
     { label: "Practice", href: "/#practice" },
     { label: "Projects", href: "/#projects" },
-    { label: "Placements", href: "/#placement" },
+    { label: "Placement", href: "/placement" },
+    { label: "Resume", href: "/resume" },
     { label: "About", href: "/about" },
   ];
 
@@ -94,6 +97,22 @@ export default function Navbar() {
                 >
                   <Code className="h-4 w-4 text-text-sub" />
                   DSA Sandbox
+                </Link>
+
+                <Link
+                  href="/placement"
+                  className="flex items-center gap-1.5 font-sans text-xs font-semibold text-text-dim transition-colors duration-150 hover:text-text-main lg:text-sm"
+                >
+                  <Briefcase className="h-4 w-4 text-text-sub" />
+                  Placement
+                </Link>
+
+                <Link
+                  href="/resume"
+                  className="flex items-center gap-1.5 font-sans text-xs font-semibold text-text-dim transition-colors duration-150 hover:text-text-main lg:text-sm"
+                >
+                  <FileText className="h-4 w-4 text-text-sub" />
+                  Resume
                 </Link>
 
                 <button
@@ -244,6 +263,24 @@ export default function Navbar() {
                 >
                   <Code className="h-4 w-4 text-text-sub" />
                   DSA Sandbox
+                </Link>
+
+                <Link
+                  href="/placement"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-bg-base/50 px-4 py-3 font-sans text-sm font-semibold text-text-main hover:bg-bg-elevated"
+                >
+                  <Briefcase className="h-4 w-4 text-text-sub" />
+                  Placement Preparation
+                </Link>
+
+                <Link
+                  href="/resume"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-bg-base/50 px-4 py-3 font-sans text-sm font-semibold text-text-main hover:bg-bg-elevated"
+                >
+                  <FileText className="h-4 w-4 text-text-sub" />
+                  Placement Resume
                 </Link>
 
                 <button

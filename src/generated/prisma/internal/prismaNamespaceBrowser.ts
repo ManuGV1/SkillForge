@@ -95,7 +95,8 @@ export const ModelName = {
   DsaHint: 'DsaHint',
   UserDsaProgress: 'UserDsaProgress',
   SupportRequest: 'SupportRequest',
-  PageVisit: 'PageVisit'
+  PageVisit: 'PageVisit',
+  Resume: 'Resume'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -731,6 +732,33 @@ export const PageVisitScalarFieldEnum = {
 } as const
 
 export type PageVisitScalarFieldEnum = (typeof PageVisitScalarFieldEnum)[keyof typeof PageVisitScalarFieldEnum]
+
+
+export const ResumeScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  templateId: 'templateId',
+  fullName: 'fullName',
+  email: 'email',
+  phone: 'phone',
+  location: 'location',
+  headline: 'headline',
+  summary: 'summary',
+  githubUrl: 'githubUrl',
+  linkedinUrl: 'linkedinUrl',
+  portfolioUrl: 'portfolioUrl',
+  skillsJson: 'skillsJson',
+  educationJson: 'educationJson',
+  experienceJson: 'experienceJson',
+  projectsJson: 'projectsJson',
+  certificationsJson: 'certificationsJson',
+  achievementsJson: 'achievementsJson',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
 
 
 export const SortOrder = {

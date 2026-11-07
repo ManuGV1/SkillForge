@@ -8,6 +8,8 @@ import {
   BookOpen,
   ChevronRight,
   Map,
+  FileText,
+  Briefcase,
 } from "lucide-react";
 
 export default async function DashboardPage() {
@@ -182,6 +184,28 @@ export default async function DashboardPage() {
               </Link>
             </div>
 
+            {/* Placement Preparation Feature Card */}
+            <div className="border border-border-sharp bg-bg-surface p-6 rounded-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <span className="font-mono text-[9px] text-primary font-bold uppercase tracking-wider">
+                  CAMPUS RECRUITMENT & INTERVIEWS
+                </span>
+                <h3 className="font-display text-base font-bold text-text-main">
+                  Placement Preparation Hub
+                </h3>
+                <p className="font-sans text-xs text-text-sub max-w-lg">
+                  Practice 5 core categories: Quantitative Aptitude, Logical Reasoning, Verbal, DSA, and Technical Fundamentals with company tracks for TCS, Infosys, Amazon & more.
+                </p>
+              </div>
+              <Link
+                href="/placement"
+                className="inline-flex items-center gap-1.5 bg-primary hover:bg-primary-dim text-bg-base font-sans text-xs font-bold uppercase tracking-wide px-4 py-2.5 rounded-sm transition-colors shrink-0"
+              >
+                <Briefcase className="h-3.5 w-3.5" />
+                Practice Now
+              </Link>
+            </div>
+
             {/* Overall progress bar */}
             <div className="space-y-1.5">
               <div className="flex justify-between items-center">
@@ -347,6 +371,26 @@ export default async function DashboardPage() {
                 My Roadmap
               </span>
               <ChevronRight className="h-3.5 w-3.5 text-text-sub" />
+            </Link>
+            <Link
+              href="/placement"
+              className="flex items-center justify-between w-full py-2.5 px-3 bg-bg-base hover:bg-bg-elevated border border-primary/40 text-text-main text-xs font-semibold uppercase tracking-wider rounded-sm transition-all focus:outline-none"
+            >
+              <span className="flex items-center gap-2">
+                <Briefcase className="h-3.5 w-3.5 text-primary" />
+                Placement Prep
+              </span>
+              <ChevronRight className="h-3.5 w-3.5 text-primary" />
+            </Link>
+            <Link
+              href="/resume"
+              className="flex items-center justify-between w-full py-2.5 px-3 bg-bg-base hover:bg-bg-elevated border border-amber-800/40 text-text-main text-xs font-semibold uppercase tracking-wider rounded-sm transition-all focus:outline-none"
+            >
+              <span className="flex items-center gap-2">
+                <FileText className="h-3.5 w-3.5 text-primary" />
+                Placement Resume
+              </span>
+              <ChevronRight className="h-3.5 w-3.5 text-primary" />
             </Link>
             <Link
               href="/profile"

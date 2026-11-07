@@ -441,7 +441,8 @@ export const ModelName = {
   DsaHint: 'DsaHint',
   UserDsaProgress: 'UserDsaProgress',
   SupportRequest: 'SupportRequest',
-  PageVisit: 'PageVisit'
+  PageVisit: 'PageVisit',
+  Resume: 'Resume'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -457,7 +458,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "role" | "user" | "profile" | "teamMember" | "account" | "session" | "verificationToken" | "careerPath" | "roadmap" | "roadmapStage" | "course" | "courseModule" | "lesson" | "resource" | "enrollment" | "lessonProgress" | "questionTopic" | "question" | "submission" | "assessment" | "assessmentAttempt" | "assessmentResult" | "project" | "projectTask" | "projectSubmission" | "company" | "companyRole" | "interviewQuestion" | "placementResource" | "readinessScore" | "review" | "reviewReport" | "certificate" | "badge" | "notification" | "savedItem" | "subscription" | "order" | "stageTopic" | "userTopicProgress" | "dsaProblem" | "dsaHint" | "userDsaProgress" | "supportRequest" | "pageVisit"
+    modelProps: "role" | "user" | "profile" | "teamMember" | "account" | "session" | "verificationToken" | "careerPath" | "roadmap" | "roadmapStage" | "course" | "courseModule" | "lesson" | "resource" | "enrollment" | "lessonProgress" | "questionTopic" | "question" | "submission" | "assessment" | "assessmentAttempt" | "assessmentResult" | "project" | "projectTask" | "projectSubmission" | "company" | "companyRole" | "interviewQuestion" | "placementResource" | "readinessScore" | "review" | "reviewReport" | "certificate" | "badge" | "notification" | "savedItem" | "subscription" | "order" | "stageTopic" | "userTopicProgress" | "dsaProblem" | "dsaHint" | "userDsaProgress" | "supportRequest" | "pageVisit" | "resume"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3791,6 +3792,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Resume: {
+      payload: Prisma.$ResumePayload<ExtArgs>
+      fields: Prisma.ResumeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ResumeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ResumeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>
+        }
+        findFirst: {
+          args: Prisma.ResumeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ResumeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>
+        }
+        findMany: {
+          args: Prisma.ResumeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>[]
+        }
+        create: {
+          args: Prisma.ResumeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>
+        }
+        createMany: {
+          args: Prisma.ResumeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ResumeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>[]
+        }
+        delete: {
+          args: Prisma.ResumeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>
+        }
+        update: {
+          args: Prisma.ResumeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>
+        }
+        deleteMany: {
+          args: Prisma.ResumeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ResumeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ResumeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>[]
+        }
+        upsert: {
+          args: Prisma.ResumeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ResumePayload>
+        }
+        aggregate: {
+          args: Prisma.ResumeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateResume>
+        }
+        groupBy: {
+          args: Prisma.ResumeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ResumeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ResumeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ResumeCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -4449,6 +4524,33 @@ export const PageVisitScalarFieldEnum = {
 export type PageVisitScalarFieldEnum = (typeof PageVisitScalarFieldEnum)[keyof typeof PageVisitScalarFieldEnum]
 
 
+export const ResumeScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  templateId: 'templateId',
+  fullName: 'fullName',
+  email: 'email',
+  phone: 'phone',
+  location: 'location',
+  headline: 'headline',
+  summary: 'summary',
+  githubUrl: 'githubUrl',
+  linkedinUrl: 'linkedinUrl',
+  portfolioUrl: 'portfolioUrl',
+  skillsJson: 'skillsJson',
+  educationJson: 'educationJson',
+  experienceJson: 'experienceJson',
+  projectsJson: 'projectsJson',
+  certificationsJson: 'certificationsJson',
+  achievementsJson: 'achievementsJson',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -4737,6 +4839,7 @@ export type GlobalOmitConfig = {
   userDsaProgress?: Prisma.UserDsaProgressOmit
   supportRequest?: Prisma.SupportRequestOmit
   pageVisit?: Prisma.PageVisitOmit
+  resume?: Prisma.ResumeOmit
 }
 
 /* Types for Logging */

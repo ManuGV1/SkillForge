@@ -48,6 +48,7 @@ model User {
   userDsaProgress    UserDsaProgress[]
   supportRequests    SupportRequest[]
   pageVisits         PageVisit[]
+  resumes            Resume[]
   createdAt          DateTime            @default(now()) @map("created_at")
   updatedAt          DateTime            @updatedAt @map("updated_at")
 
@@ -700,5 +701,38 @@ model PageVisit {
   @@index([userId])
   @@map("page_visits")
 }
+
+// =====================================================
+// RESUME BUILDER — Placement-Ready ATS Resumes
+// =====================================================
+
+model Resume {
+  id                 String   @id @default(uuid())
+  userId             String   @map("user_id")
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title              String   @default("My Technical Resume")
+  templateId         String   @default("modern-ats") @map("template_id") // "modern-ats", "classic-ats", "minimal-tech"
+  fullName           String   @default("") @map("full_name")
+  email              String   @default("")
+  phone              String?  @default("")
+  location           String?  @default("")
+  headline           String?  @default("")
+  summary            String?  @default("")
+  githubUrl          String?  @default("") @map("github_url")
+  linkedinUrl        String?  @default("") @map("linkedin_url")
+  portfolioUrl       String?  @default("") @map("portfolio_url")
+  skillsJson         String?  @default("[]") @map("skills_json")
+  educationJson      String?  @default("[]") @map("education_json")
+  experienceJson     String?  @default("[]") @map("experience_json")
+  projectsJson       String?  @default("[]") @map("projects_json")
+  certificationsJson String?  @default("[]") @map("certifications_json")
+  achievementsJson   String?  @default("[]") @map("achievements_json")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@map("resumes")
+}
+
 
 
