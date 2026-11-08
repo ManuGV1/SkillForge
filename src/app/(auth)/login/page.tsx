@@ -243,7 +243,7 @@ function LoginForm() {
           <p className="font-sans text-xs text-text-sub">
             New to SkillForge?{" "}
             <a
-              href="/register"
+              href={callbackUrl !== "/dashboard" ? `/register?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/register"}
               className="font-semibold text-primary hover:text-primary-dim transition-colors"
             >
               Create an Account

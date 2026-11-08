@@ -6,11 +6,30 @@ import {
   PLACEMENT_QUESTIONS,
   COMPANY_TRACKS,
 } from "@/lib/placement/placementData";
+import {
+  getAllPlacementQuestions,
+  getUserSolvedQuestionIds,
+} from "@/lib/placement/placementDb";
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
-    const session = await auth();
+    let session = null;
+    try {
+      session = await auth();
+    } catch {
+      session = null;
+    }
     const userId = session?.user?.id;
+
+    // Read guest attempts cookie if guest
+    let guestAttempts = 0;
+    if (!userId) {
+      const cookieHeader = req.headers.get("cookie");
+      const match = cookieHeader?.match(/(?:^|;\s*)guest_placement_attempts=([^;]*)/);
+      if (match) {
+        guestAttempts = parseInt(decodeURIComponent(match[1]), 10) || 0;
+      }
+    }
 
     let userReadiness = {
       overall: 45,
@@ -21,9 +40,13 @@ export async function GET() {
       coreCs: 35,
     };
     let userProfile = null;
+    let userSolvedQuestionIds: string[] = [];
+
+    // Load questions (DB overlay + baseline static fallback)
+    const allQuestions = await getAllPlacementQuestions();
 
     if (userId) {
-      const [readinessRecord, profileRecord] = await Promise.all([
+      const [readinessRecord, profileRecord, solvedIds] = await Promise.all([
         db.readinessScore.findFirst({
           where: { userId },
           orderBy: { updatedAt: "desc" },
@@ -38,9 +61,11 @@ export async function GET() {
             gradYear: true,
           },
         }),
+        getUserSolvedQuestionIds(userId),
       ]);
 
       userProfile = profileRecord;
+      userSolvedQuestionIds = solvedIds;
 
       if (readinessRecord) {
         const avg = Math.round(
@@ -66,10 +91,13 @@ export async function GET() {
       success: true,
       categories: PLACEMENT_CATEGORIES,
       companies: COMPANY_TRACKS,
-      questions: PLACEMENT_QUESTIONS,
+      questions: allQuestions,
+      solvedQuestionIds: userSolvedQuestionIds,
       readiness: userReadiness,
       userProfile,
       isAuthenticated: !!userId,
+      guestAttempts: !userId ? guestAttempts : 0,
+      guestLimit: 3,
     });
   } catch (error) {
     console.error("Error in /api/placement:", error);

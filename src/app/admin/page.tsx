@@ -12,6 +12,7 @@ import {
   Loader2,
   Lock,
   Activity,
+  BookOpenCheck,
 } from "lucide-react";
 
 export default function AdminDashboardPage() {
@@ -24,6 +25,7 @@ export default function AdminDashboardPage() {
     adminCount: 0,
     totalVisits: 0,
     todayVisits: 0,
+    totalPlacementQuestions: 0,
   });
 
   const [loading, setLoading] = useState(false);
@@ -40,13 +42,15 @@ export default function AdminDashboardPage() {
       fetch("/api/admin/support").then((res) => res.json()).catch(() => ({})),
       fetch("/api/admin/users").then((res) => res.json()).catch(() => ({})),
       fetch("/api/admin/analytics?range=30d").then((res) => res.json()).catch(() => ({})),
+      fetch("/api/admin/placement/questions").then((res) => res.json()).catch(() => ({})),
     ])
-      .then(([supportRes, usersRes, analyticsRes]) => {
+      .then(([supportRes, usersRes, analyticsRes, placementRes]) => {
         if (!isMounted) return;
 
         const tickets = supportRes.success ? supportRes.data || [] : [];
         const users = usersRes.success ? usersRes.data?.users || [] : [];
         const analyticsSummary = analyticsRes.success ? analyticsRes.data?.summary : null;
+        const placementQuestions = placementRes.success ? placementRes.data?.questions || [] : [];
 
         setStats({
           totalSupportTickets: tickets.length,
@@ -58,6 +62,7 @@ export default function AdminDashboardPage() {
           ).length,
           totalVisits: analyticsSummary?.totalVisits || 0,
           todayVisits: analyticsSummary?.todayVisits || 0,
+          totalPlacementQuestions: placementQuestions.length,
         });
       })
       .catch((err) => {
@@ -138,7 +143,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Dashboard Navigation Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Visitor Analytics Card */}
           <div className="bg-bg-surface border border-border-sharp rounded-xl p-6 hover:border-primary/50 transition-all shadow-sm flex flex-col justify-between space-y-6">
             <div className="space-y-4">
@@ -170,6 +175,41 @@ export default function AdminDashboardPage() {
               className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-sm bg-primary text-bg-base font-sans text-xs font-semibold uppercase tracking-wider hover:bg-primary-dim transition-colors"
             >
               Open Analytics
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* Placement Questions Management Card */}
+          <div className="bg-bg-surface border border-border-sharp rounded-xl p-6 hover:border-primary/50 transition-all shadow-sm flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <div className="flex justify-between items-start">
+                <div className="p-2.5 rounded-lg bg-purple-950/60 border border-purple-800/60 text-purple-400">
+                  <BookOpenCheck className="w-6 h-6" />
+                </div>
+                <span className="font-mono text-xs text-purple-300 bg-purple-950/60 border border-purple-800/60 px-2.5 py-1 rounded-full">
+                  {stats.totalPlacementQuestions} Questions
+                </span>
+              </div>
+
+              <div>
+                <h2 className="text-lg font-display font-bold text-text-main">
+                  Placement Question Bank
+                </h2>
+                <p className="text-xs text-text-dim mt-1 leading-relaxed">
+                  Manage campus placement questions across Aptitude, Reasoning, Verbal, DSA, and Core CS. Add, edit, test, and delete questions with DB persistence.
+                </p>
+              </div>
+
+              <div className="pt-2 text-xs font-mono text-text-sub flex items-center gap-4 border-t border-border-sharp/40">
+                <span>5 Core Tracks • <strong className="text-text-main">Full CRUD Enabled</strong></span>
+              </div>
+            </div>
+
+            <Link
+              href="/admin/placement"
+              className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-sm bg-primary text-bg-base font-sans text-xs font-semibold uppercase tracking-wider hover:bg-primary-dim transition-colors"
+            >
+              Manage Question Bank
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

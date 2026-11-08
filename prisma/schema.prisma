@@ -49,6 +49,7 @@ model User {
   supportRequests    SupportRequest[]
   pageVisits         PageVisit[]
   resumes            Resume[]
+  placementAttempts  PlacementAttempt[]
   createdAt          DateTime            @default(now()) @map("created_at")
   updatedAt          DateTime            @updatedAt @map("updated_at")
 
@@ -736,3 +737,45 @@ model Resume {
 
 
 
+
+
+// =====================================================
+// PLACEMENT PREPARATION — Question Bank & Student Attempts
+// =====================================================
+
+model PlacementQuestion {
+  id           String   @id @default(uuid())
+  categoryId   String   @map("category_id")
+  subtopic     String
+  title        String
+  description  String
+  difficulty   String   // EASY, MEDIUM, HARD
+  type         String   @default("MCQ") // MCQ, CODE
+  options      String[]
+  correctAnswer Int     @map("correct_answer")
+  explanation  String
+  companies    String[]
+  formulaOrTip String?  @map("formula_or_tip")
+  hints        String[]
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([categoryId])
+  @@map("placement_questions")
+}
+
+model PlacementAttempt {
+  id             String   @id @default(uuid())
+  userId         String   @map("user_id")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId     String   @map("question_id")
+  selectedAnswer Int      @map("selected_answer")
+  isCorrect      Boolean  @map("is_correct")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@index([questionId])
+  @@map("placement_attempts")
+}

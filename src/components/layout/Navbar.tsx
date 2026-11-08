@@ -24,7 +24,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const isLoggedIn = !!session?.user;
-  const isAdmin = session?.user?.role === "ADMIN" || session?.user?.role === "SUPER_ADMIN";
+  const role = session?.user?.role?.toUpperCase();
+  const isAdmin = role === "ADMIN" || role === "SUPER_ADMIN";
 
   const publicLinks = [
     { label: "Discover", href: "/#paths" },
@@ -73,6 +74,64 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))
+            ) : isAdmin ? (
+              <>
+                <Link
+                  href="/admin"
+                  className="flex items-center gap-1.5 font-sans text-xs font-semibold text-text-dim transition-colors duration-150 hover:text-text-main lg:text-sm"
+                >
+                  <LayoutDashboard className="h-4 w-4 text-primary" />
+                  Dashboard
+                </Link>
+
+                <Link
+                  href="/admin/placement"
+                  className="flex items-center gap-1.5 font-sans text-xs font-semibold text-text-dim transition-colors duration-150 hover:text-text-main lg:text-sm"
+                >
+                  <Briefcase className="h-4 w-4 text-text-sub" />
+                  Placement
+                </Link>
+
+                <Link
+                  href="/resume"
+                  className="flex items-center gap-1.5 font-sans text-xs font-semibold text-text-dim transition-colors duration-150 hover:text-text-main lg:text-sm"
+                >
+                  <FileText className="h-4 w-4 text-text-sub" />
+                  Resume Analyzer
+                </Link>
+
+                <button
+                  onClick={handleOpenAiTutor}
+                  className="flex items-center gap-1.5 border-0 bg-transparent font-sans text-xs font-semibold text-primary transition-colors duration-150 hover:text-primary-dim cursor-pointer lg:text-sm focus:outline-none"
+                >
+                  <Sparkles className="h-4 w-4 animate-pulse text-primary" />
+                  AI Tutor
+                </button>
+
+                <Link
+                  href="/admin/analytics"
+                  className="flex items-center gap-1.5 font-sans text-xs font-semibold text-amber-400 transition-colors duration-150 hover:text-amber-300 lg:text-sm"
+                >
+                  <Activity className="h-4 w-4 text-amber-400" />
+                  Analytics
+                </Link>
+
+                <Link
+                  href="/admin/support"
+                  className="flex items-center gap-1.5 font-sans text-xs font-semibold text-emerald-400 transition-colors duration-150 hover:text-emerald-300 lg:text-sm"
+                >
+                  <LifeBuoy className="h-4 w-4 text-emerald-400" />
+                  Admin Support
+                </Link>
+
+                <Link
+                  href="/profile"
+                  className="flex items-center gap-1.5 font-sans text-xs font-semibold text-text-dim transition-colors duration-150 hover:text-text-main lg:text-sm"
+                >
+                  <User className="h-4 w-4 text-text-sub" />
+                  Profile
+                </Link>
+              </>
             ) : (
               <>
                 <Link
@@ -130,25 +189,6 @@ export default function Navbar() {
                   <User className="h-4 w-4 text-text-sub" />
                   Profile
                 </Link>
-
-                {isAdmin && (
-                  <>
-                    <Link
-                      href="/admin/analytics"
-                      className="flex items-center gap-1.5 font-sans text-xs font-semibold text-amber-400 transition-colors duration-150 hover:text-amber-300 lg:text-sm"
-                    >
-                      <Activity className="h-4 w-4 text-amber-400" />
-                      Analytics
-                    </Link>
-                    <Link
-                      href="/admin/support"
-                      className="flex items-center gap-1.5 font-sans text-xs font-semibold text-emerald-400 transition-colors duration-150 hover:text-emerald-300 lg:text-sm"
-                    >
-                      <LifeBuoy className="h-4 w-4 text-emerald-400" />
-                      Admin Support
-                    </Link>
-                  </>
-                )}
               </>
             )}
           </nav>
@@ -236,6 +276,84 @@ export default function Navbar() {
                   </a>
                 </div>
               </>
+            ) : isAdmin ? (
+              <div className="flex flex-col gap-2 pt-2">
+                <Link
+                  href="/admin"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-bg-base/50 px-4 py-3 font-sans text-sm font-semibold text-text-main hover:bg-bg-elevated"
+                >
+                  <LayoutDashboard className="h-4 w-4 text-primary" />
+                  Dashboard
+                </Link>
+
+                <Link
+                  href="/admin/placement"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-bg-base/50 px-4 py-3 font-sans text-sm font-semibold text-text-main hover:bg-bg-elevated"
+                >
+                  <Briefcase className="h-4 w-4 text-text-sub" />
+                  Placement
+                </Link>
+
+                <Link
+                  href="/resume"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-bg-base/50 px-4 py-3 font-sans text-sm font-semibold text-text-main hover:bg-bg-elevated"
+                >
+                  <FileText className="h-4 w-4 text-text-sub" />
+                  Resume Analyzer
+                </Link>
+
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleOpenAiTutor();
+                  }}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-primary/10 border border-primary/30 px-4 py-3 font-sans text-sm font-semibold text-primary hover:bg-primary/20 cursor-pointer"
+                >
+                  <Sparkles className="h-4 w-4 text-primary animate-pulse" />
+                  AI Tutor
+                </button>
+
+                <Link
+                  href="/admin/analytics"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-amber-950/20 border border-amber-800/40 px-4 py-3 font-sans text-sm font-semibold text-amber-400 hover:bg-amber-950/40"
+                >
+                  <Activity className="h-4 w-4 text-amber-400" />
+                  Analytics
+                </Link>
+
+                <Link
+                  href="/admin/support"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-emerald-950/20 border border-emerald-800/40 px-4 py-3 font-sans text-sm font-semibold text-emerald-400 hover:bg-emerald-950/40"
+                >
+                  <LifeBuoy className="h-4 w-4 text-emerald-400" />
+                  Admin Support
+                </Link>
+
+                <Link
+                  href="/profile"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex w-full items-center gap-3 rounded-sm bg-bg-base/50 px-4 py-3 font-sans text-sm font-semibold text-text-main hover:bg-bg-elevated"
+                >
+                  <User className="h-4 w-4 text-text-sub" />
+                  Profile
+                </Link>
+
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    signOut({ callbackUrl: "/" });
+                  }}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-sm border border-red-950/40 bg-red-950/20 py-3 font-sans text-sm font-semibold text-red-400 hover:bg-red-950/40 cursor-pointer mt-2"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Sign Out
+                </button>
+              </div>
             ) : (
               <div className="flex flex-col gap-2 pt-2">
                 <Link
@@ -302,28 +420,6 @@ export default function Navbar() {
                   <User className="h-4 w-4 text-text-sub" />
                   Profile
                 </Link>
-
-                {isAdmin && (
-                  <>
-                    <Link
-                      href="/admin/analytics"
-                      onClick={() => setIsOpen(false)}
-                      className="inline-flex w-full items-center gap-3 rounded-sm bg-amber-950/20 border border-amber-800/40 px-4 py-3 font-sans text-sm font-semibold text-amber-400 hover:bg-amber-950/40"
-                    >
-                      <Activity className="h-4 w-4 text-amber-400" />
-                      Visitor Analytics
-                    </Link>
-
-                    <Link
-                      href="/admin/support"
-                      onClick={() => setIsOpen(false)}
-                      className="inline-flex w-full items-center gap-3 rounded-sm bg-emerald-950/20 border border-emerald-800/40 px-4 py-3 font-sans text-sm font-semibold text-emerald-400 hover:bg-emerald-950/40"
-                    >
-                      <LifeBuoy className="h-4 w-4 text-emerald-400" />
-                      Admin Support
-                    </Link>
-                  </>
-                )}
 
                 <button
                   onClick={() => {

@@ -271,3 +271,13 @@ export type PageVisit = Prisma.PageVisitModel
  * 
  */
 export type Resume = Prisma.ResumeModel
+/**
+ * Model PlacementQuestion
+ * 
+ */
+export type PlacementQuestion = Prisma.PlacementQuestionModel
+/**
+ * Model PlacementAttempt
+ * 
+ */
+export type PlacementAttempt = Prisma.PlacementAttemptModel

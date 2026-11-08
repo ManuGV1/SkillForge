@@ -2,16 +2,63 @@ import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { PLACEMENT_QUESTIONS } from "@/lib/placement/placementData";
+import { getPlacementQuestionById } from "@/lib/placement/placementDb";
+
+/** Guest users may submit at most this many answers before being prompted to sign in. */
+const GUEST_ATTEMPT_LIMIT = 3;
+
+function getCookie(cookieHeader: string | null, name: string): string | null {
+  if (!cookieHeader) return null;
+  const match = cookieHeader.match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
 
 export async function POST(req: Request) {
   try {
-    const session = await auth();
+    let session = null;
+    try {
+      session = await auth();
+    } catch {
+      session = null;
+    }
     const userId = session?.user?.id;
-    const body = await req.json();
 
+    // --- Guest attempt enforcement (backend) ---
+    let currentGuestAttempts = 0;
+    if (!userId) {
+      const cookieVal = getCookie(req.headers.get("cookie"), "guest_placement_attempts");
+      const cookieAttempts = cookieVal ? parseInt(cookieVal, 10) : 0;
+      const headerVal = req.headers.get("x-guest-attempts");
+      const headerAttempts = headerVal ? parseInt(headerVal, 10) : 0;
+
+      currentGuestAttempts = Math.max(
+        isNaN(cookieAttempts) ? 0 : cookieAttempts,
+        isNaN(headerAttempts) ? 0 : headerAttempts
+      );
+
+      if (currentGuestAttempts >= GUEST_ATTEMPT_LIMIT) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "GUEST_LIMIT_REACHED",
+            message: "Guest practice limit reached (3/3). Please sign in or create an account to continue.",
+            limitReached: true,
+            guestAttempts: currentGuestAttempts,
+          },
+          { status: 403 }
+        );
+      }
+    }
+
+    const body = await req.json();
     const { questionId, selectedAnswerIndex } = body;
 
-    const question = PLACEMENT_QUESTIONS.find((q) => q.id === questionId);
+    let question = PLACEMENT_QUESTIONS.find((q) => q.id === questionId);
+    if (!question) {
+      const dbMatch = await getPlacementQuestionById(questionId);
+      if (dbMatch) question = dbMatch;
+    }
+
     if (!question) {
       return NextResponse.json(
         { success: false, error: "Question not found" },
@@ -22,8 +69,31 @@ export async function POST(req: Request) {
     const isCorrect = Number(selectedAnswerIndex) === Number(question.correctAnswer);
 
     let updatedReadiness = null;
+    let solvedQuestionIds: string[] | undefined = undefined;
 
     if (userId) {
+      try {
+        // Persist attempt history for logged-in students
+        await db.placementAttempt.create({
+          data: {
+            userId,
+            questionId: question.id,
+            selectedAnswer: Number(selectedAnswerIndex),
+            isCorrect,
+          },
+        });
+
+        // Retrieve current list of solved questions
+        const solvedRecords = await db.placementAttempt.findMany({
+          where: { userId, isCorrect: true },
+          select: { questionId: true },
+          distinct: ["questionId"],
+        });
+        solvedQuestionIds = solvedRecords.map((r: { questionId: string }) => r.questionId);
+      } catch (attErr) {
+        console.warn("Could not persist student placement attempt:", attErr);
+      }
+
       try {
         const existingScore = await db.readinessScore.findFirst({
           where: { userId },
@@ -100,14 +170,29 @@ export async function POST(req: Request) {
       }
     }
 
-    return NextResponse.json({
+    const nextGuestAttempts = !userId ? currentGuestAttempts + 1 : undefined;
+
+    const response = NextResponse.json({
       success: true,
       isCorrect,
       correctAnswer: question.correctAnswer,
       explanation: question.explanation,
       formulaOrTip: question.formulaOrTip,
       updatedReadiness,
+      solvedQuestionIds,
+      guestAttempts: nextGuestAttempts,
+      limitReached: !userId ? nextGuestAttempts! >= GUEST_ATTEMPT_LIMIT : false,
     });
+
+    if (!userId && nextGuestAttempts !== undefined) {
+      response.cookies.set("guest_placement_attempts", String(nextGuestAttempts), {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        sameSite: "lax",
+      });
+    }
+
+    return response;
   } catch (err) {
     console.error("Practice submission error:", err);
     return NextResponse.json(

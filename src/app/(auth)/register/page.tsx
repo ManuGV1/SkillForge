@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState, useEffect, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Lock, Mail, User, ArrowRight, Loader2, AlertTriangle, CheckCircle2 } from "lucide-react";
 
-export default function RegisterPage() {
+function RegisterForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
   const { status } = useSession();
 
   const [name, setName] = useState("");
@@ -19,9 +21,9 @@ export default function RegisterPage() {
 
   useEffect(() => {
     if (status === "authenticated") {
-      router.replace("/dashboard");
+      router.replace(callbackUrl);
     }
-  }, [status, router]);
+  }, [status, callbackUrl, router]);
 
   if (status === "loading" || status === "authenticated") {
     return (
@@ -67,7 +69,10 @@ export default function RegisterPage() {
       } else {
         setSuccess(true);
         setTimeout(() => {
-          router.push(`/login?email=${encodeURIComponent(email)}`);
+          const loginTarget = `/login?email=${encodeURIComponent(email)}${
+            callbackUrl !== "/dashboard" ? `&callbackUrl=${encodeURIComponent(callbackUrl)}` : ""
+          }`;
+          router.push(loginTarget);
         }, 2000);
       }
     } catch {
@@ -104,15 +109,14 @@ export default function RegisterPage() {
         )}
 
         {success && (
-          <div className="flex items-start gap-2.5 p-3.5 bg-success/15 border border-success/40 rounded-sm text-success text-xs font-sans animate-fade-in">
+          <div className="flex items-start gap-2.5 p-3.5 bg-emerald-950/20 border border-emerald-950/60 rounded-sm text-emerald-400 text-xs font-sans">
             <CheckCircle2 className="h-4 w-4 shrink-0 mt-0.5" />
-            <span>Account created successfully! Redirecting to login...</span>
+            <span>Account created successfully! Redirecting to sign in...</span>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-4">
-            {/* Name Field */}
             <div className="space-y-1.5">
               <label htmlFor="name" className="block text-xs font-mono text-text-dim uppercase tracking-wider">
                 Full Name
@@ -128,13 +132,12 @@ export default function RegisterPage() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Karan Sharma"
+                  placeholder="John Doe"
                   className="block w-full bg-bg-base border border-border-sharp px-3 py-2.5 pl-10 text-sm text-text-main rounded-sm focus:border-primary focus:outline-none placeholder:text-text-sub transition-colors duration-150 font-sans"
                 />
               </div>
             </div>
 
-            {/* Email Field */}
             <div className="space-y-1.5">
               <label htmlFor="email" className="block text-xs font-mono text-text-dim uppercase tracking-wider">
                 Email Address
@@ -150,13 +153,12 @@ export default function RegisterPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="karan@email.com"
+                  placeholder="name@email.com"
                   className="block w-full bg-bg-base border border-border-sharp px-3 py-2.5 pl-10 text-sm text-text-main rounded-sm focus:border-primary focus:outline-none placeholder:text-text-sub transition-colors duration-150 font-sans"
                 />
               </div>
             </div>
 
-            {/* Password Field */}
             <div className="space-y-1.5">
               <label htmlFor="password" className="block text-xs font-mono text-text-dim uppercase tracking-wider">
                 Password
@@ -178,7 +180,6 @@ export default function RegisterPage() {
               </div>
             </div>
 
-            {/* Confirm Password Field */}
             <div className="space-y-1.5">
               <label htmlFor="confirmPassword" className="block text-xs font-mono text-text-dim uppercase tracking-wider">
                 Confirm Password
@@ -223,12 +224,29 @@ export default function RegisterPage() {
         <div className="text-center pt-4 border-t border-border-sharp/40">
           <p className="font-sans text-xs text-text-sub">
             Already have an account?{" "}
-            <a href="/login" className="font-semibold text-primary hover:text-primary-dim transition-colors">
+            <a
+              href={callbackUrl !== "/dashboard" ? `/login?callbackUrl=${encodeURIComponent(callbackUrl)}` : "/login"}
+              className="font-semibold text-primary hover:text-primary-dim transition-colors"
+            >
               Sign In
             </a>
           </p>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex-grow flex items-center justify-center py-20 px-4">
+          <Loader2 className="h-6 w-6 text-primary animate-spin" />
+        </div>
+      }
+    >
+      <RegisterForm />
+    </Suspense>
   );
 }

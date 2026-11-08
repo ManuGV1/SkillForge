@@ -442,7 +442,9 @@ export const ModelName = {
   UserDsaProgress: 'UserDsaProgress',
   SupportRequest: 'SupportRequest',
   PageVisit: 'PageVisit',
-  Resume: 'Resume'
+  Resume: 'Resume',
+  PlacementQuestion: 'PlacementQuestion',
+  PlacementAttempt: 'PlacementAttempt'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -458,7 +460,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "role" | "user" | "profile" | "teamMember" | "account" | "session" | "verificationToken" | "careerPath" | "roadmap" | "roadmapStage" | "course" | "courseModule" | "lesson" | "resource" | "enrollment" | "lessonProgress" | "questionTopic" | "question" | "submission" | "assessment" | "assessmentAttempt" | "assessmentResult" | "project" | "projectTask" | "projectSubmission" | "company" | "companyRole" | "interviewQuestion" | "placementResource" | "readinessScore" | "review" | "reviewReport" | "certificate" | "badge" | "notification" | "savedItem" | "subscription" | "order" | "stageTopic" | "userTopicProgress" | "dsaProblem" | "dsaHint" | "userDsaProgress" | "supportRequest" | "pageVisit" | "resume"
+    modelProps: "role" | "user" | "profile" | "teamMember" | "account" | "session" | "verificationToken" | "careerPath" | "roadmap" | "roadmapStage" | "course" | "courseModule" | "lesson" | "resource" | "enrollment" | "lessonProgress" | "questionTopic" | "question" | "submission" | "assessment" | "assessmentAttempt" | "assessmentResult" | "project" | "projectTask" | "projectSubmission" | "company" | "companyRole" | "interviewQuestion" | "placementResource" | "readinessScore" | "review" | "reviewReport" | "certificate" | "badge" | "notification" | "savedItem" | "subscription" | "order" | "stageTopic" | "userTopicProgress" | "dsaProblem" | "dsaHint" | "userDsaProgress" | "supportRequest" | "pageVisit" | "resume" | "placementQuestion" | "placementAttempt"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3866,6 +3868,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PlacementQuestion: {
+      payload: Prisma.$PlacementQuestionPayload<ExtArgs>
+      fields: Prisma.PlacementQuestionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlacementQuestionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlacementQuestionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>
+        }
+        findFirst: {
+          args: Prisma.PlacementQuestionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlacementQuestionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>
+        }
+        findMany: {
+          args: Prisma.PlacementQuestionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>[]
+        }
+        create: {
+          args: Prisma.PlacementQuestionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>
+        }
+        createMany: {
+          args: Prisma.PlacementQuestionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlacementQuestionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>[]
+        }
+        delete: {
+          args: Prisma.PlacementQuestionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>
+        }
+        update: {
+          args: Prisma.PlacementQuestionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlacementQuestionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlacementQuestionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlacementQuestionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlacementQuestionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementQuestionPayload>
+        }
+        aggregate: {
+          args: Prisma.PlacementQuestionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlacementQuestion>
+        }
+        groupBy: {
+          args: Prisma.PlacementQuestionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementQuestionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlacementQuestionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementQuestionCountAggregateOutputType> | number
+        }
+      }
+    }
+    PlacementAttempt: {
+      payload: Prisma.$PlacementAttemptPayload<ExtArgs>
+      fields: Prisma.PlacementAttemptFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PlacementAttemptFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PlacementAttemptFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>
+        }
+        findFirst: {
+          args: Prisma.PlacementAttemptFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PlacementAttemptFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>
+        }
+        findMany: {
+          args: Prisma.PlacementAttemptFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>[]
+        }
+        create: {
+          args: Prisma.PlacementAttemptCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>
+        }
+        createMany: {
+          args: Prisma.PlacementAttemptCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PlacementAttemptCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>[]
+        }
+        delete: {
+          args: Prisma.PlacementAttemptDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>
+        }
+        update: {
+          args: Prisma.PlacementAttemptUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>
+        }
+        deleteMany: {
+          args: Prisma.PlacementAttemptDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PlacementAttemptUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PlacementAttemptUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>[]
+        }
+        upsert: {
+          args: Prisma.PlacementAttemptUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PlacementAttemptPayload>
+        }
+        aggregate: {
+          args: Prisma.PlacementAttemptAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePlacementAttempt>
+        }
+        groupBy: {
+          args: Prisma.PlacementAttemptGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementAttemptGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PlacementAttemptCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PlacementAttemptCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -4551,6 +4701,41 @@ export const ResumeScalarFieldEnum = {
 export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
 
 
+export const PlacementQuestionScalarFieldEnum = {
+  id: 'id',
+  categoryId: 'categoryId',
+  subtopic: 'subtopic',
+  title: 'title',
+  description: 'description',
+  difficulty: 'difficulty',
+  type: 'type',
+  options: 'options',
+  correctAnswer: 'correctAnswer',
+  explanation: 'explanation',
+  companies: 'companies',
+  formulaOrTip: 'formulaOrTip',
+  hints: 'hints',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementQuestionScalarFieldEnum = (typeof PlacementQuestionScalarFieldEnum)[keyof typeof PlacementQuestionScalarFieldEnum]
+
+
+export const PlacementAttemptScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  questionId: 'questionId',
+  selectedAnswer: 'selectedAnswer',
+  isCorrect: 'isCorrect',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementAttemptScalarFieldEnum = (typeof PlacementAttemptScalarFieldEnum)[keyof typeof PlacementAttemptScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -4840,6 +5025,8 @@ export type GlobalOmitConfig = {
   supportRequest?: Prisma.SupportRequestOmit
   pageVisit?: Prisma.PageVisitOmit
   resume?: Prisma.ResumeOmit
+  placementQuestion?: Prisma.PlacementQuestionOmit
+  placementAttempt?: Prisma.PlacementAttemptOmit
 }
 
 /* Types for Logging */

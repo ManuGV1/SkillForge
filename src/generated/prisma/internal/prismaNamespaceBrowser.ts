@@ -96,7 +96,9 @@ export const ModelName = {
   UserDsaProgress: 'UserDsaProgress',
   SupportRequest: 'SupportRequest',
   PageVisit: 'PageVisit',
-  Resume: 'Resume'
+  Resume: 'Resume',
+  PlacementQuestion: 'PlacementQuestion',
+  PlacementAttempt: 'PlacementAttempt'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -759,6 +761,41 @@ export const ResumeScalarFieldEnum = {
 } as const
 
 export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
+
+
+export const PlacementQuestionScalarFieldEnum = {
+  id: 'id',
+  categoryId: 'categoryId',
+  subtopic: 'subtopic',
+  title: 'title',
+  description: 'description',
+  difficulty: 'difficulty',
+  type: 'type',
+  options: 'options',
+  correctAnswer: 'correctAnswer',
+  explanation: 'explanation',
+  companies: 'companies',
+  formulaOrTip: 'formulaOrTip',
+  hints: 'hints',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementQuestionScalarFieldEnum = (typeof PlacementQuestionScalarFieldEnum)[keyof typeof PlacementQuestionScalarFieldEnum]
+
+
+export const PlacementAttemptScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  questionId: 'questionId',
+  selectedAnswer: 'selectedAnswer',
+  isCorrect: 'isCorrect',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PlacementAttemptScalarFieldEnum = (typeof PlacementAttemptScalarFieldEnum)[keyof typeof PlacementAttemptScalarFieldEnum]
 
 
 export const SortOrder = {

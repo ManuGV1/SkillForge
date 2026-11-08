@@ -8,6 +8,13 @@ export type PlacementCategoryKey =
 export type QuestionDifficulty = "EASY" | "MEDIUM" | "HARD";
 export type QuestionType = "MCQ" | "CODE";
 
+export interface DsaTestCase {
+  input: string;
+  expectedOutput: string;
+  explanation?: string;
+  isHidden?: boolean;
+}
+
 export interface PlacementQuestion {
   id: string;
   categoryId: PlacementCategoryKey;
@@ -22,6 +29,37 @@ export interface PlacementQuestion {
   companies: string[];
   formulaOrTip?: string;
   hints?: string[];
+  testCases?: DsaTestCase[];
+  starterCode?: Record<string, string>;
+  constraints?: string[];
+}
+
+export interface MockTestQuestionState {
+  questionId: string;
+  selectedOption: number | null;
+  status: "UNVISITED" | "ANSWERED" | "MARKED_FOR_REVIEW" | "ANSWERED_MARKED" | "SKIPPED";
+  timeSpentSeconds: number;
+}
+
+export interface MockTestResult {
+  totalQuestions: number;
+  attemptedCount: number;
+  correctCount: number;
+  incorrectCount: number;
+  skippedCount: number;
+  marksObtained: number;
+  totalMarks: number;
+  accuracy: number;
+  timeSpentSeconds: number;
+  categoryBreakdown: Record<
+    string,
+    {
+      total: number;
+      correct: number;
+      incorrect: number;
+      score: number;
+    }
+  >;
 }
 
 export interface PlacementSubtopic {
