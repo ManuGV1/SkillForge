@@ -12,8 +12,17 @@ import {
   FileCheck,
   Award,
   ChevronRight,
+  ChevronDown,
+  Sparkles,
 } from "lucide-react";
 import InteractiveJourney from "@/components/ui/InteractiveJourney";
+import {
+  AnimatedHeadline,
+  RotatingTagline,
+  AnimatedPitch,
+  AnimatedCTA,
+} from "@/components/ui/HeroAnimations";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export default function Home() {
   const careerPaths = [
@@ -51,44 +60,118 @@ export default function Home() {
 
   return (
     <div className="w-full flex flex-col">
-      {/* SECTION 1: HERO */}
-      <section id="hero" className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-20 border-b border-border-sharp overflow-hidden">
-        {/* Subtle grid backdrop */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(245,158,11,0.05),transparent_40%)] pointer-events-none"></div>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
-          <div className="inline-flex items-center gap-2 bg-bg-surface border border-border-sharp px-3 py-1.5 rounded-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
-            <span className="font-mono text-[10px] text-text-dim tracking-wider uppercase">
-              SkillForge v1.0 Foundation
+      {/* SECTION 1: CINEMATIC HERO */}
+      <section
+        id="hero"
+        className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center pt-24 pb-20 border-b border-border-sharp overflow-hidden"
+      >
+        {/* Full-width Autoplay Background Video */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover object-center filter brightness-[0.88] contrast-105"
+          >
+            <source src="/intro/skillforge-intro.mp4" type="video/mp4" />
+            <source src="/intro/skillforge-intro.mp4.mp4" type="video/mp4" />
+          </video>
+
+          {/* Cinematic Dark Overlays for Optimal Text Readability & High Developer Visibility */}
+          {/* Moderately reduced base dark tint */}
+          <div className="absolute inset-0 bg-black/45" />
+
+          {/* Softened radial vignette spotlight for enhanced subject clarity */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,14,23,0.15)_0%,rgba(10,14,23,0.72)_100%)]" />
+
+          {/* Subtle Orange/Amber atmospheric glow */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(245,158,11,0.12),transparent_55%)]" />
+
+          {/* Top smooth blend into navbar */}
+          <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-bg-base/85 via-bg-base/30 to-transparent" />
+
+          {/* Bottom smooth dissolution into Section 2 */}
+          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-bg-base via-bg-base/75 to-transparent" />
+        </div>
+
+        {/* Foreground Content */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10 flex flex-col items-center justify-center space-y-6 sm:space-y-8">
+          {/* Brand pill badge */}
+          <div className="inline-flex items-center gap-2 bg-bg-surface/85 backdrop-blur-md border border-primary/30 px-3.5 py-1.5 rounded-full shadow-lg shadow-black/50 animate-in fade-in duration-500">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="font-mono text-[10px] sm:text-xs text-primary font-bold tracking-widest uppercase">
+              SkillForge v2.0 Platform
             </span>
           </div>
 
-          <div className="space-y-4">
-            <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-text-main leading-[1.05] max-w-5xl mx-auto uppercase">
-              Build Your <span className="text-primary">Future</span>.
+          {/* Main Title & Tagline */}
+          <div className="space-y-3 sm:space-y-4 max-w-5xl mx-auto">
+            <span className="block font-mono text-xs sm:text-sm font-extrabold uppercase tracking-[0.35em] text-primary/95 drop-shadow-sm">
+              SKILLFORGE
+            </span>
+            <RotatingTagline />
+            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase leading-[1.05] drop-shadow-2xl">
+              <AnimatedHeadline
+                line1="Think. Build."
+                line2="Forge Your Future."
+              />
             </h1>
-            <p className="font-display text-lg sm:text-2xl font-medium text-text-dim tracking-wide max-w-3xl mx-auto">
-              Learn. Build. Practice. Get Hired.
-            </p>
           </div>
 
-          <p className="font-sans text-sm sm:text-base text-text-sub max-w-2xl mx-auto leading-relaxed">
-            A highly structured, rigorous tech career-development platform. From writing your first clean compile to deploying portfolio projects and undergoing technical interviews.
-          </p>
+          {/* Supporting Pitch */}
+          <AnimatedPitch>
+            A rigorous, highly structured engineering career accelerator. Master algorithmic problem solving, build verified production projects, practice placement assessments, and crack tier-1 technical interviews.
+          </AnimatedPitch>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          {/* CTA Buttons */}
+          <AnimatedCTA>
             <a
-              href="#paths"
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-primary hover:bg-primary-dim text-bg-base font-sans text-sm font-bold tracking-wide uppercase px-8 py-3.5 rounded-sm transition-colors duration-150 gap-2"
+              href="/register"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dim text-bg-base font-sans text-sm font-bold tracking-wider uppercase px-8 py-3.5 rounded-sm transition-all duration-200 shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.99]"
             >
-              Explore Career Paths
+              Get Started
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
-              href="#journey"
-              className="w-full sm:w-auto inline-flex items-center justify-center border border-border-sharp hover:bg-bg-surface text-text-main font-sans text-sm font-semibold tracking-wide uppercase px-8 py-3.5 rounded-sm transition-colors duration-150"
+              href="#paths"
+              className="w-full sm:w-auto inline-flex items-center justify-center rounded-sm border border-border-sharp/90 bg-bg-surface/70 backdrop-blur-md hover:bg-bg-surface hover:border-primary/40 text-text-main font-sans text-sm font-semibold tracking-wider uppercase px-8 py-3.5 transition-all duration-200 shadow-lg hover:text-white"
             >
-              How it works
+              Explore Features
+            </a>
+          </AnimatedCTA>
+
+          {/* Core Feature Highlights */}
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs font-mono text-text-sub">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-bg-surface/60 backdrop-blur-md border border-border-sharp/60">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+              70+ Placement Assessments
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-bg-surface/60 backdrop-blur-md border border-border-sharp/60">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
+              Interactive DSA Sandbox
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-bg-surface/60 backdrop-blur-md border border-border-sharp/60">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
+              AI Resume Intelligence
+            </span>
+          </div>
+
+          {/* Scroll Down Cue */}
+          <div className="pt-6 sm:pt-10">
+            <a
+              href="#paths"
+              aria-label="Scroll to explore features"
+              className="inline-flex flex-col items-center gap-1.5 text-text-dim hover:text-primary transition-colors duration-200 group"
+            >
+              <span className="font-mono text-[9px] uppercase tracking-widest opacity-80 group-hover:opacity-100">
+                Explore Tracks
+              </span>
+              <ChevronDown className="h-4 w-4 animate-bounce text-primary/80 group-hover:text-primary" />
             </a>
           </div>
         </div>
@@ -98,19 +181,19 @@ export default function Home() {
       <section className="py-24 bg-bg-surface border-b border-border-sharp">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-5 space-y-4">
+            <ScrollReveal className="lg:col-span-5 space-y-4" delay={0}>
               <span className="font-mono text-[10px] text-primary font-bold uppercase tracking-wider">
                 Who We Are
               </span>
               <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-text-main uppercase">
                 Bridging the Gap to Production Competency
               </h2>
-            </div>
-            <div className="lg:col-span-7">
+            </ScrollReveal>
+            <ScrollReveal className="lg:col-span-7" delay={120}>
               <p className="font-sans text-sm sm:text-base text-text-dim leading-relaxed">
                 Traditional platforms offer fragmented video clips and copy-paste tutorials. SkillForge by Code404 provides an integrated workspace where learning paths are linked to actual compiler sandboxes, real projects require local git submissions, and certificates are cryptographically verified. We replace the generic SaaS dashboard with a professional technical environment.
               </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -118,7 +201,7 @@ export default function Home() {
       {/* SECTION 3: CAREER PATH DISCOVERY */}
       <section id="paths" className="py-24 border-b border-border-sharp">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
-          <div className="text-center space-y-3">
+          <ScrollReveal className="text-center space-y-3" delay={0}>
             <span className="font-mono text-[10px] text-primary font-bold uppercase tracking-widest">
               DISCOVER
             </span>
@@ -128,14 +211,15 @@ export default function Home() {
             <p className="font-sans text-sm text-text-dim max-w-xl mx-auto">
               Select a specialized engineering track. We provide a structured roadmap tailored specifically to teach you these skills.
             </p>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {careerPaths.map((path) => {
+            {careerPaths.map((path, idx) => {
               const PathIcon = path.icon;
               return (
-                <div
+                <ScrollReveal
                   key={path.title}
+                  delay={idx * 80}
                   className="bg-bg-surface border border-border-sharp p-6 rounded-sm flex flex-col justify-between space-y-6 hover:border-text-sub transition-colors duration-200"
                 >
                   <div className="space-y-4">
@@ -160,7 +244,7 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
@@ -170,7 +254,7 @@ export default function Home() {
       {/* SECTION 4: INTERACTIVE JOURNEY */}
       <section id="journey" className="py-24 bg-bg-surface/50 border-b border-border-sharp">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
-          <div className="text-center space-y-3">
+          <ScrollReveal className="text-center space-y-3" delay={0}>
             <span className="font-mono text-[10px] text-primary font-bold uppercase tracking-widest">
               THE PIPELINE
             </span>
@@ -180,7 +264,7 @@ export default function Home() {
             <p className="font-sans text-sm text-text-dim max-w-xl mx-auto">
               We guide you sequentially through six distinct milestones of engineering skill acquisition.
             </p>
-          </div>
+          </ScrollReveal>
 
           <InteractiveJourney />
         </div>
@@ -190,7 +274,7 @@ export default function Home() {
       <section id="courses" className="py-24 border-b border-border-sharp">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 space-y-6">
+            <ScrollReveal className="lg:col-span-5 space-y-6" delay={0}>
               <div className="inline-flex items-center gap-1.5 bg-bg-surface border border-border-sharp px-3 py-1 rounded-sm">
                 <Bookmark className="h-3 w-3 text-primary" />
                 <span className="font-mono text-[9px] text-primary font-bold uppercase tracking-wider">
@@ -223,10 +307,10 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Course Module Card Visual */}
-            <div className="lg:col-span-7 bg-bg-surface border border-border-sharp p-6 sm:p-8 rounded-sm">
+            <ScrollReveal className="lg:col-span-7 bg-bg-surface border border-border-sharp p-6 sm:p-8 rounded-sm" delay={140}>
               <div className="space-y-6">
                 <div className="flex items-center justify-between border-b border-border-sharp/40 pb-4">
                   <div>
@@ -262,7 +346,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -272,7 +356,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Visual Editor Mock */}
-            <div className="lg:col-span-7 order-2 lg:order-1 bg-bg-surface border border-border-sharp p-4 rounded-sm font-mono text-xs shadow-lg">
+            <ScrollReveal className="lg:col-span-7 order-2 lg:order-1 bg-bg-surface border border-border-sharp p-4 rounded-sm font-mono text-xs shadow-lg" delay={140}>
               <div className="flex items-center justify-between border-b border-border-sharp/60 pb-3 mb-4">
                 <div className="flex items-center space-x-2">
                   <span className="h-2 w-2 rounded-full bg-border-sharp"></span>
@@ -299,10 +383,10 @@ export default function Home() {
                   Run Tests
                 </button>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Info Text */}
-            <div className="lg:col-span-5 order-1 lg:order-2 space-y-6">
+            <ScrollReveal className="lg:col-span-5 order-1 lg:order-2 space-y-6" delay={0}>
               <div className="inline-flex items-center gap-1.5 bg-bg-surface border border-border-sharp px-3 py-1 rounded-sm">
                 <Terminal className="h-3 w-3 text-primary" />
                 <span className="font-mono text-[9px] text-primary font-bold uppercase tracking-wider">
@@ -315,7 +399,7 @@ export default function Home() {
               <p className="font-sans text-sm text-text-dim leading-relaxed">
                 Test your skills in our embedded code playground. Beyond solving logic questions, you will examine Big-O complexity, test corner cases, and optimize memory footprints under compilation restrictions.
               </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -324,7 +408,7 @@ export default function Home() {
       <section id="projects" className="py-24 border-b border-border-sharp">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 space-y-6">
+            <ScrollReveal className="lg:col-span-5 space-y-6" delay={0}>
               <div className="inline-flex items-center gap-1.5 bg-bg-surface border border-border-sharp px-3 py-1 rounded-sm">
                 <CheckSquare className="h-3 w-3 text-primary" />
                 <span className="font-mono text-[9px] text-primary font-bold uppercase tracking-wider">
@@ -337,10 +421,10 @@ export default function Home() {
               <p className="font-sans text-sm text-text-dim leading-relaxed">
                 Build applications that demonstrate real engineering merit. Follow a sequential step-by-step checklist of construction tasks. Submit repository links for verification against system integration checks.
               </p>
-            </div>
+            </ScrollReveal>
 
             {/* Project tasks mockup list */}
-            <div className="lg:col-span-7 bg-bg-surface border border-border-sharp p-6 sm:p-8 rounded-sm">
+            <ScrollReveal className="lg:col-span-7 bg-bg-surface border border-border-sharp p-6 sm:p-8 rounded-sm" delay={140}>
               <div className="space-y-6">
                 <div className="flex items-center justify-between border-b border-border-sharp/40 pb-4">
                   <div>
@@ -376,7 +460,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -386,7 +470,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* QA Bank Mock */}
-            <div className="lg:col-span-7 order-2 lg:order-1 bg-bg-surface border border-border-sharp p-6 rounded-sm">
+            <ScrollReveal className="lg:col-span-7 order-2 lg:order-1 bg-bg-surface border border-border-sharp p-6 rounded-sm" delay={140}>
               <div className="space-y-4">
                 <div className="flex items-center justify-between border-b border-border-sharp/40 pb-3">
                   <span className="text-xs font-mono text-text-sub uppercase tracking-wider">Placement Prep Bank</span>
@@ -410,10 +494,10 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Info Text */}
-            <div className="lg:col-span-5 order-1 lg:order-2 space-y-6">
+            <ScrollReveal className="lg:col-span-5 order-1 lg:order-2 space-y-6" delay={0}>
               <div className="inline-flex items-center gap-1.5 bg-bg-surface border border-border-sharp px-3 py-1 rounded-sm">
                 <FileCheck className="h-3 w-3 text-primary" />
                 <span className="font-mono text-[9px] text-primary font-bold uppercase tracking-wider">
@@ -426,7 +510,7 @@ export default function Home() {
               <p className="font-sans text-sm text-text-dim leading-relaxed">
                 Review technical questions asked in top tier engineering placements. Utilize our profile resume builder to compile ATS-optimized resumes highlighting your verified projects and course achievements.
               </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -434,7 +518,7 @@ export default function Home() {
       {/* SECTION 9: CODE404 IDENTITY */}
       <section className="py-24 border-b border-border-sharp relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(245,158,11,0.02),transparent_30%)] pointer-events-none"></div>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
+        <ScrollReveal className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10" delay={0}>
           <span className="font-mono text-[10px] text-primary font-bold uppercase tracking-widest">
             ENGINEERING STAMP
           </span>
@@ -444,12 +528,12 @@ export default function Home() {
           <p className="font-sans text-sm text-text-dim max-w-2xl mx-auto leading-relaxed">
             SkillForge is engineered and maintained by Code404. We are a developer-first engineering team. We don&apos;t believe in generic learning templates, artificial intelligence wrappers, or gamified tokens. We believe in reading documentation, compiling code, testing features, and getting hired.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* SECTION 10: FINAL CALL-TO-ACTION */}
       <section className="py-28 bg-bg-surface border-b border-border-sharp">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <ScrollReveal className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center space-y-8" delay={0}>
           <Award className="h-10 w-10 text-primary mx-auto" />
           <div className="space-y-4">
             <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-text-main uppercase">
@@ -471,7 +555,7 @@ export default function Home() {
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   );
